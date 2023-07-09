@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/terminal.css">
+</head>
+
+<body>
+    <div style="width: 100%;">
+        <div class="terminal" id="terminal-content"></div>
+        <div class="terminal-input-wrapper" id="t-input" style="display: none;">
+            <b>> &nbsp;</b>
+            <input type="text" id="terminal-input" autofocus>
+        </div>
+    </div>
+    <script src="assets/typing.js"></script>
+    <script src="assets/core.js"></script>
+    <script src="assets/commands.js"></script>
+    <script>
+        typeEffect(".terminal", "", 25)
+            .then(() => {
+                document.getElementById("t-input").style.display = "flex";
+            });
+
+        document.getElementById("terminal-input").addEventListener("keydown", async function (event) {
+            if (event.key === "Enter") {
+                var command = document.getElementById("terminal-input").value;
+                document.getElementById("terminal-input").value = "";
+                document.getElementById("t-input").style.display = "none";
+                await executeCommand(command);
+                document.getElementById("t-input").style.display = "flex";
+                document.getElementById("terminal-input").focus();
+
+            }
+        });
+
+    </script>
+    <script src="command.js"></script>
+</body>
+
+</html>

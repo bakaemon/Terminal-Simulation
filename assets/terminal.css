@@ -1,0 +1,62 @@
+body {
+    background-color: black;
+    border: 1px solid #000;
+    color: #fff;
+    font-family: monospace;
+    padding: 10px;
+    margin: 10px;
+}
+
+.terminal .output {
+    overflow: flex;
+    word-wrap: break-word;
+    border: 1px solid #000;
+    background-color: black;
+    color: #fff;
+    font-family: monospace;
+}
+
+.terminal.typing:after {
+    content: "|";
+    display: inline-block;
+    background-color: white;
+
+}
+
+.terminal.typed:after {
+    content: "|";
+    display: inline-block;
+    background-color: white;
+    animation: blink-caret 0.75s step-end infinite;
+}
+
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        visibility: hidden;
+    }
+
+    50% {
+        visibility: visible;
+    }
+}
+
+#terminal-input {
+    display: inline-block;
+    background-color: black;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    caret-color: white;
+    caret-shape: block;
+}
+
+.terminal-input-wrapper {
+    display: flex;
+    align-items: center;
+}
