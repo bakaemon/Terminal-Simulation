@@ -29,24 +29,18 @@ registerCommand({
 ```
 # Typing Effects
 The function `typingEffect` can be found at `assets/typing.js`. It can be used to achieve some cool terminal effects. The typing speed can be change at the function parameter.
+It is recommended to use `printCommand` and `printCommandWithCallback` at `assets/core.js` instead as it is the wrapper function that simplify usage of `typingEffect`.
 #### Delay effect
 Delay effect is a built-in feature of `typingEffect` function. It can be used by adding [>X] where X is int number indicating miliseconds. Here is an example:
 ```js
-typingEffect('.terminal',
+printCommand('delay-command',
   'This will delay for 1 second [>1000] This is after the delay'
 )
 ```
 #### Waiting Effect
-Waiting is another feature that allow the typing effect to delay until a callback/process finished. To use the effect, call the function typingEffectEvent and put callbacks that need to be used to a array and pass it to the parameter. Here is the usage:
+Waiting is another feature that allow the typing effect to delay until a callback/process finished. To use the effect, call the function `printCommandWithCallback` and put callbacks that need to be used to a array and pass it to the parameter. Here is the usage:
 ```js
-// test
-registerCommand({
-    name: "test",
-    description: "test",
-    function: async () => {
-        await printCommandWithCallback(this.name, "Loading...[!0]", [async() => { await new Promise((resolve) => setTimeout(resolve, 10000)); return "Done!" }]);
-    }
-});
+await printCommandWithCallback(this.name, "Loading...[!0]", [async() => { await new Promise((resolve) => setTimeout(resolve, 10000)); return "Done!" }]);
 ```
 The returning value will be put at where [!x] is located. In the above example the output would be: `Loading... Done!`
 
