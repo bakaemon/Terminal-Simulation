@@ -42,7 +42,7 @@ Waiting is another feature that allow the typing effect to delay until a callbac
 ```js
 await printCommandWithCallback(this.name, "Loading...[!0]", [async() => { await new Promise((resolve) => setTimeout(resolve, 10000)); return "Done!" }]);
 ```
-The returning value will be put at where [!x] is located. In the above example the output would be: `Loading... Done!`
+The returning value will be put at where [!x] where x is the index of the callback array is located. In the above example the output would be: `Loading... Done!`
 The Waiting Effect also can be interrupted by using Ctrl + C during its effect.
 
 
