@@ -51,6 +51,34 @@ async function printCommand(command, output, speed = 25) {
     }
 }
 
+// print command with callback using [!X] where X is the index of the callback
+async function printCommandWithCallback(command, output, callbacks, speed = 25) {
+    // output div, which is a child of the terminal div
+    var id = Math.random().toString(36).substr(2, 9);
+    const outputE = document.createElement("div");
+    outputE.setAttribute("id", 'output-' + id);
+    outputE.classList.add("terminal");
+    outputE.style.wordBreak = "break-all";
+    terminalElement.appendChild(outputE);
+    const outputElement = document.getElementById('output-' + id);
+    outputElement.style.wordBreak = "break-all";
+    // check of output has \n, remove it and print each line separately
+    if (output.includes("\n")) {
+        const lines = output.split("\n");
+        for (let i = 0; i < lines.length; i++) {
+            await typeEffectEvent(outputElement, lines[i], speed, callbacks);
+            if (i !== lines.length - 1) {
+                outputElement.innerHTML += "<br>";
+            }
+        }
+    } else {
+        await typeEffectEvent(outputElement, output, speed, callbacks);
+    }
+}
+
+
+
+
 async function processCommand(command) {
     const args = command.split(" ");
     const commandName = args[0];

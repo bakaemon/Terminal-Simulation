@@ -20,7 +20,7 @@ registerCommand({
     description: "Display the current time",
     function: async () => {
         await printCommand("time", new Date().toLocaleTimeString() +
-         " " + new Date().toLocaleDateString());
+            " " + new Date().toLocaleDateString());
     }
 });
 
@@ -42,7 +42,7 @@ registerCommand({
     }
 });
 
-registerCommand({ 
+registerCommand({
     name: "history",
     description: "Display the command history",
     function: async () => {
@@ -50,12 +50,12 @@ registerCommand({
     }
 });
 
-// test break line
+// test
 registerCommand({
     name: "test",
-    description: "test break line",
+    description: "test",
     function: async () => {
-        await printCommand("test", "hello\nworld");
+        await printCommandWithCallback(this.name, "Loading...[!0]", [async() => { await new Promise((resolve) => setTimeout(resolve, 10000)); return "Done!" }]);
     }
 });
 
