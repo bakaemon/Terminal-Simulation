@@ -50,12 +50,4 @@ registerCommand({
     }
 });
 
-// test
-registerCommand({
-    name: "test",
-    description: "test",
-    function: async () => {
-        await printCommandWithCallback(this.name, "Loading...[!0]", [async() => { await new Promise((resolve) => setTimeout(resolve, 10000)); return "Done!" }]);
-    }
-});
 

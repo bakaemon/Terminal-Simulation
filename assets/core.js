@@ -37,18 +37,8 @@ async function printCommand(command, output, speed = 25) {
     terminalElement.appendChild(outputE);
     const outputElement = document.getElementById('output-' + id);
     outputElement.style.wordBreak = "break-all";
-    // check of output has \n, remove it and print each line separately
-    if (output.includes("\n")) {
-        const lines = output.split("\n");
-        for (let i = 0; i < lines.length; i++) {
-            await typeEffect(outputElement, lines[i], speed);
-            if (i !== lines.length - 1) {
-                outputElement.innerHTML += "<br>";
-            }
-        }
-    } else {
-        await typeEffect(outputElement, output, speed);
-    }
+    
+    await typeEffect(outputElement, output, speed);
 }
 
 // print command with callback using [!X] where X is the index of the callback

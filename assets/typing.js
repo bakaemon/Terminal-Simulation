@@ -78,6 +78,8 @@ async function typeEffectEvent(element, text, speed, callbacks) {
                     await typeWriter();
                     return;
                 }
+            } else if (currentChar === "\n") {
+                terminal.innerHTML += "<br>";
             }
             terminal.innerHTML += currentChar;
             i++;
